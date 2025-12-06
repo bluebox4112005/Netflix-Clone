@@ -1,45 +1,46 @@
-This project implements a DevSecOps pipeline to deploy a Netflix-style web application. The process includes automation, containerization, security scanning, and monitoring. Whenever code is pushed to the repository, the CI/CD pipeline automatically builds, scans, deploys, and monitors the application.
+## 📌 How the Project Works
 
-The workflow follows these stages:
+This project uses a complete **DevSecOps pipeline** to deploy a Netflix-style web application. The pipeline automates building, testing, securing, containerizing, deploying, and monitoring the application.
 
-Code Commit (GitHub)
+---
 
-Code is pushed to the repository, triggering the pipeline.
+### 🔄 Workflow Overview
 
-CI/CD Automation (Jenkins)
+- **Code Commit (GitHub)**  
+  Developer pushes code to GitHub which triggers the CI/CD pipeline.
 
-Jenkins pulls the code, installs dependencies, and initiates the build process.
+- **CI/CD Automation (Jenkins)**  
+  Jenkins pulls the code, installs dependencies, and starts the build process.
 
-Security Scanning (DevSecOps Stage)
+- **Security Scanning (DevSecOps Stage)**  
+  - **SonarQube:** Code quality and vulnerability analysis  
+  - **OWASP Dependency Check:** Library and package vulnerability scan  
+  - **Trivy:** Filesystem and container security scanning
 
-SonarQube performs code quality and bug analysis.
+- **Containerization (Docker)**  
+  The application is packaged into a Docker image and tested locally.
 
-OWASP Dependency Check scans for package vulnerabilities.
+- **Image Push (DockerHub)**  
+  Once validated, the image is pushed to DockerHub for deployment use.
 
-Trivy scans the filesystem/docker image for security issues.
+- **Deployment (EC2 / Kubernetes / Container Runtime)**  
+  The application is deployed in a cloud environment and made accessible.
 
-Containerization (Docker)
+- **Monitoring (Prometheus + Grafana)**  
+  Metrics and logs are collected and visualized for health, performance, and alerts.
 
-The application is built into a Docker image and tested locally.
+---
 
-Image Push (DockerHub)
+## 🛠️ Tools Used
 
-Once the image passes scans, it is pushed to a Docker registry.
+| Stage | Tools |
+|-------|--------|
+| Version Control | Git, GitHub |
+| CI/CD | Jenkins |
+| Security Scanning | SonarQube, Trivy, OWASP Dependency-Check |
+| Containerization | Docker |
+| Registry | DockerHub |
+| Deployment | AWS EC2 / Kubernetes |
+| Monitoring | Prometheus, Grafana |
 
-Deployment (EC2 / Kubernetes)
-
-The application is deployed using Docker containers or Kubernetes workloads.
-
-Monitoring & Observability (Prometheus + Grafana)
-
-System metrics, logs, and performance data are captured and visualized in dashboards.
-
-
-Version Control -	Git, GitHub
-CI/CD -	Jenkins
-Containerization -	Docker
-Registry - DockerHub
-Security Scanning -	SonarQube, Trivy, OWASP Dependency Scanner
-Cloud / Hosting -	AWS EC2 (or Kubernetes cluster)
-Monitoring -	Prometheus, Grafana
-Application Stack -	React / Node.js / API (Netflix Clone UI)
+---
